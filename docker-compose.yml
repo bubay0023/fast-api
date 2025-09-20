@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  fastapi_app:
+    build: .
+    container_name: fastapi_app_test3
+    ports:
+      - "8001:8000"
+    environment:
+      # This still works because both containers are on the same network
+      - CHROMA_HOST=chromadb
+    # Connect this service to the same external network
+    networks:
+      - shared_net
+
+# Define the network as external here as well
+networks:
+  shared_net:
+    external: true
+    name: my-shared-network
