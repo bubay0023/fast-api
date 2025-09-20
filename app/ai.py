@@ -12,8 +12,7 @@ client = chromadb.HttpClient(host=chroma_host, port=8000)
 
 embeddings = AzureOpenAIEmbeddings(
                 model="text-embedding-3-large",         # base model name
-                deployment="text-embedding-3-large",   # your Azure deployment name
-                api_key="",     
+                deployment="text-embedding-3-large",   # your Azure deployment name    
                 azure_endpoint="https://fristaifoundry01.cognitiveservices.azure.com/",
                 api_version="2024-12-01-preview"                # check your Azure resource version
                 )
@@ -43,7 +42,6 @@ PROMPT = PromptTemplate(
 retriever = vectorstore.as_retriever(search_kwargs={"k": 5}) 
 
 llm = AzureChatOpenAI(
-        api_key="", 
         azure_endpoint="https://bubay-mewfyz7m-eastus2.cognitiveservices.azure.com/",
         api_version="2025-01-01-preview",   
         azure_deployment="gpt-4.1",   
